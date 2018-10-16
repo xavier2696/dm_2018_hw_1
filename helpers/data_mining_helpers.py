@@ -42,3 +42,20 @@ def tokenize_text(text, remove_stopwords=False):
             # filters here
             tokens.append(word)
     return tokens
+
+#helper functions for lab hw
+
+def sentiment_data_dictionary(array):#creates a dictionary from the array of lines
+    result_dictionary = {'sentences':[], 'scores':[]}
+    temporal_array = [line.split("\t") for line in array if len(line.split("\t")) == 2]
+    for line in temporal_array:
+        result_dictionary['sentences'] += [line[0].strip("\n\t")]
+        result_dictionary['scores'] += [line[1]]
+    return result_dictionary
+        
+        
+        
+        
+        
+        
+        
