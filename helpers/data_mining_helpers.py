@@ -30,7 +30,7 @@ def check_missing_values(row):
     for element in row:
         if element == True:
             counter+=1
-    return ("The amoung of missing records is: ", counter)
+    return ("The amoung of missing records is: %d" % counter)
 
 def tokenize_text(text, remove_stopwords=False):
     """
@@ -47,7 +47,7 @@ def tokenize_text(text, remove_stopwords=False):
 
 def sentiment_data_dictionary(array):#creates a dictionary from the array of lines
     result_dictionary = {'sentences':[], 'scores':[]}
-    temporal_array = [line.split("\t") for line in array if len(line.split("\t")) == 2]
+    temporal_array = [line.split("\t") for line in array if len(line.split("\t")) == 2 and line.split("\t")[0] is not None and line.split("\t")[1] is not None]
     for line in temporal_array:
         result_dictionary['sentences'] += [line[0].strip("\n\t")]
         result_dictionary['scores'] += [line[1]]
