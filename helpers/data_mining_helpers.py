@@ -46,11 +46,12 @@ def tokenize_text(text, remove_stopwords=False):
 #helper functions for lab hw
 
 def sentiment_data_dictionary(array):#creates a dictionary from the array of lines
-    result_dictionary = {'sentences':[], 'scores':[]}
-    temporal_array = [line.split("\t") for line in array if len(line.split("\t")) == 2 and line.split("\t")[0] is not None and line.split("\t")[1] is not None]
+    result_dictionary = {'sentences':[], 'scores':[], 'sources':[]}
+    temporal_array = [line.split("\t") for line in array if len(line.split("\t")) == 3 and line.split("\t")[0] is not None and line.split("\t")[1] is not None and line.split("\t")[2] is not None]
     for line in temporal_array:
         result_dictionary['sentences'] += [line[0].strip("\n\t")]
         result_dictionary['scores'] += [line[1]]
+        result_dictionary['sources'] += [line[2]]
     return result_dictionary
         
         
