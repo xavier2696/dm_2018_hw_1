@@ -1,4 +1,5 @@
 import nltk
+import numpy as np
 
 """
 Helper functions for data mining lab session 2017 Fall
@@ -53,6 +54,16 @@ def sentiment_data_dictionary(array):#creates a dictionary from the array of lin
         result_dictionary['scores'] += [line[1]]
         result_dictionary['sources'] += [line[2]]
     return result_dictionary
+            
+def extended_jaccard_coefficient(vector1,vector2):#made own method because couldn't find a method for extended jaccard coefficient
+    dot_product = vector1 @ vector2
+    magnitude_v1 = np.linalg.norm(vector1)
+    magnitude_v2 = np.linalg.norm(vector2)
+    divisor = np.square(magnitude_v1) + np.square(magnitude_v2) - dot_product
+    result = 0
+    if divisor != 0:
+        result = dot_product/divisor
+    return result
         
         
         
